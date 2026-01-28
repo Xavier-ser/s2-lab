@@ -53,11 +53,11 @@ class product {
 
 }
 
-public class saar{
+public class product_details{
     public static void main (String [] Args){
-        product p1= new product(101,"meemy",100);
-        product p2 = new product(102,"mundu",1000);
-        product p3 = new product(103,"oravakandi",69);
+        product p1= new product(101,"Alchemist",100);
+        product p2 = new product(102,"Rich Dad Poor Dad",1000);
+        product p3 = new product(103,"Ikigai",69);
         
         
         product lowest = p1;
