@@ -5,4 +5,4 @@ if [ -d "$name" ];then
 echo " $name is a directoryy"
 else 
 echo " $name is not a directory"
-fi
+fi  
