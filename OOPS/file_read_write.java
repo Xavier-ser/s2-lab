@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class FileExample {
+public class file_read_write {
     public static void main(String[] args) throws IOException {
 
         File file = new File("sample.txt");
