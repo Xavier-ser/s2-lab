@@ -1,73 +1,59 @@
-import java.util.*;   // Import Scanner class
+import java.util.Scanner;
 
-// -------------------------------------------------
-// User-defined exception class
-// This exception is thrown when a negative number is entered
-// -------------------------------------------------
+// --------------------------------------------
+// User-defined Exception Class
+// --------------------------------------------
 class NegativeException extends RuntimeException
 {
-    // Constructor to pass error message to parent class
     NegativeException(String message)
     {
         super(message);
     }
 }
 
-
-// -------------------------------------------------
-// Main class
-// -------------------------------------------------
-class user_defined_exception
+// --------------------------------------------
+// Main Class
+// --------------------------------------------
+public class user_defined_exception
 {
     public static void main(String args[])
     {
-        // Create Scanner object to take input from user
         Scanner sc = new Scanner(System.in);
 
-        // Ask user how many numbers they want to enter
         System.out.print("Enter number of elements: ");
-        int n = sc.nextInt();   // Read number of elements
+        int n = sc.nextInt();
 
-        // Create integer array of size n
-        int nos[] = new int[n];
-
-        // Variable to store sum of positive numbers
+        int[] nos = new int[n];
         int sum = 0;
+        int i = 0;
 
-        try
+        // Loop until n valid numbers are entered
+        while(i < n)
         {
-            // Loop to read n numbers
-            for(int i = 0; i < n; i++)
+            try
             {
                 System.out.print("Enter number " + (i+1) + ": ");
-                nos[i] = sc.nextInt();   // Store number in array
+                int num = sc.nextInt();
 
-                // Check if number is negative
-                if(nos[i] < 0)
+                if(num < 0)
                 {
-                    // Throw user-defined exception if negative number found
-                    throw new NegativeException("Negative number not allowed");
+                    throw new NegativeException("Negative number not allowed. Please re-enter.");
                 }
 
-                // If number is positive, add it to sum
-                sum = sum + nos[i];
+                nos[i] = num;
+                sum += num;
+                i++;   // move to next index only if valid
             }
-
-            // Calculate average
-            double average = (double) sum / n;
-
-            // Display average
-            System.out.println("Average = " + average);
+            catch(NegativeException e)
+            {
+                System.out.println(e.getMessage());
+            }
         }
 
-        // Catch block to handle negative number exception
-        catch(NegativeException e)
-        {
-            // Display custom error message
-            System.out.println(e.getMessage());
-        }
+        double average = (double) sum / n;
 
-        // Close scanner
+        System.out.println("Average = " + average);
+
         sc.close();
     }
 }
