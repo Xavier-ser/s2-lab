@@ -1,0 +1,74 @@
+CREATE PROCEDURE `even_odd`(in num int) 
+BEGIN 
+ declare r varchar(10); 
+ if num%2=0 
+ then 
+ set r="even"; 
+ else 
+ set r="odd"; 
+ end if; 
+ select num as Number, r as Result; 
+END 
+
+
+
+CREATE PROCEDURE `grade`(in g int) 
+BEGIN 
+ declare des varchar(50); 
+ if g > 90 
+ then 
+ set des="Grade is A"; 
+ elseif g > 80 
+ then 
+ set des="Grade is B"; 
+ elseif g > 70 
+ then 
+ set des="Grade is C"; 
+ elseif g > 60 
+ then 
+ set des="Grade is D";
+    else 
+        set des="Grade is E"; 
+    end if; 
+    select g as Marks,des as Grade; 
+END 
+
+
+CREATE PROCEDURE `pos_neg_zero`(in num int) 
+BEGIN 
+    declare r varchar(10); 
+    if num >0 
+    then  
+        set r= "positive"; 
+    elseif num<0 
+    then  
+        set r= "negative"; 
+    else 
+        set r= "zero"; 
+    end if; 
+    select num as Number, r as Result; 
+END 
+
+
+
+CREATE PROCEDURE `day`(in d date) 
+BEGIN 
+    declare dat varchar(10); 
+    set dat=Weekday(d); 
+    select d as Date, dat as WeekDay; 
+END 
+
+
+
+CREATE PROCEDURE `fact`(in num int) 
+BEGIN 
+    declare f int default 1; 
+    declare n1 int; 
+    set n1=num; 
+    while num >0  
+    do  
+        set f=f*num; 
+        set num=num-1; 
+    end while; 
+    select n1 as Number, f as Factorial; 
+END 
