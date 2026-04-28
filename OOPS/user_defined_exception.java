@@ -1,58 +1,47 @@
 import java.util.Scanner;
 
-// --------------------------------------------
-// User-defined Exception Class
-// --------------------------------------------
-class NegativeException extends RuntimeException
-{
-    NegativeException(String message)
-    {
-        super(message);
+// Step 1: Custom Exception
+class negative extends RuntimeException {
+    negative(String msg) {
+        super(msg);
     }
 }
 
-// --------------------------------------------
-// Main Class
-// --------------------------------------------
-public class user_defined_exception
-{
-    public static void main(String args[])
-    {
+// Step 2: Main class
+public class Average {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter number of elements: ");
-        int n = sc.nextInt();
+        try {
+            // Step 3: number of elements
+            System.out.print("Enter number of elements: ");
+            int n = sc.nextInt();
 
-        int[] nos = new int[n];
-        int sum = 0;
-        int i = 0;
+            // Step 4: array creation
+            int[] nos = new int[n];
 
-        // Loop until n valid numbers are entered
-        while(i < n)
-        {
-            try
-            {
-                System.out.print("Enter number " + (i+1) + ": ");
-                int num = sc.nextInt();
+            // Step 5: sum variable
+            int sum = 0;
 
-                if(num < 0)
-                {
-                    throw new NegativeException("Negative number not allowed. Please re-enter.");
+            // Step 6: input numbers
+            System.out.println("Enter " + n + " numbers:");
+            for (int i = 0; i < n; i++) {
+                nos[i] = sc.nextInt();
+
+                if (nos[i] < 0) {
+                    throw new negative("Negative number not allowed");
                 }
 
-                nos[i] = num;
-                sum += num;
-                i++;   // move to next index only if valid
+                sum += nos[i];
             }
-            catch(NegativeException e)
-            {
-                System.out.println(e.getMessage());
-            }
+
+            // Step 7: average
+            double avg = (double) sum / n;
+            System.out.println("Average = " + avg);
+
+        } catch (negative e) {
+            System.out.println(e.getMessage());
         }
-
-        double average = (double) sum / n;
-
-        System.out.println("Average = " + average);
 
         sc.close();
     }
