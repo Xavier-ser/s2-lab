@@ -16,7 +16,7 @@ public class CopyFile {
             fw.write(ch);
         }
 
-        fr.close();
+        fr.close(); 
         fw.close();
 
         System.out.println("File copied successfully.");
