@@ -1,0 +1,14 @@
+CREATE PROCEDURE InsertProduct(
+    IN barcode VARCHAR(4),
+    IN name VARCHAR(20),
+    IN price DOUBLE(5,2),
+    IN quantity INT
+)
+BEGIN
+    IF price > 0 AND quantity >= 0 THEN
+        INSERT INTO Product(PdtId, PName, Price, Quantity)
+        VALUES (barcode, name, price, quantity);
+    ELSE
+        SELECT 'Row Not Inserted' AS Result;
+    END IF;
+END;
